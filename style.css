@@ -1,44 +1,55 @@
-* Custom Styles for Spotify Recap Page */
-
 /* Body Styles */
 body {
-  background-color: #f8f9fa; /* Light background color */
-  color: #212529; /* Dark text color */
+  background-color: #191414;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
 }
 
 /* Navbar Styles */
 .navbar {
-  background-color: #1db954 !important; /* Spotify green */
+  background-color: #191414;
+  padding: 10px 0;
 }
 
 .navbar-brand {
-  color: #ffffff !important; /* White text color */
+  color: #1db954;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* Carousel Styles */
+.carousel-item img {
+  border-radius: 5px;
+}
+
 .carousel-caption {
-  background-color: rgba(29, 185, 84, 0.7); /* Transparent green background */
-  color: #ffffff; /* White text color */
+  background-color: rgba(25, 20, 20, 0.7);
+  border-radius: 5px;
+  padding: 10px;
 }
 
-/* Music Genre Chart Styles */
-#musicGenreChart {
-  margin: auto;
-  display: block;
+.carousel-caption h5,
+.carousel-caption p {
+  margin: 0;
 }
 
-/* Call to Action Styles */
-.btn-primary {
-  background-color: #1db954; /* Spotify green */
-  border-color: #1db954; /* Spotify green */
+.carousel-caption p {
+  font-size: 14px;
 }
 
-.btn-primary:hover {
-  background-color: #14843d; /* Darker green on hover */
-  border-color: #14843d; /* Darker green on hover */
+.play-btn {
+  background-color: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Responsive Styles for Small Screens */
-@media (max-width: 768px) {
-  /* Adjust styles for smaller screens if needed */
+.play-btn:hover {
+  background-color: #14843d;
 }

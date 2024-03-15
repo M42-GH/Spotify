@@ -1,44 +1,35 @@
-/* Custom Styles for Spotify Recap Page */
-
-/* Body Styles */
 body {
-  background-color: #f8f9fa; /* Light background color */
-  color: #212529; /* Dark text color */
+  background-color: #f8f9fa;
+  color: #212529;
 }
 
-/* Navbar Styles */
 .navbar {
-  background-color: #1db954 !important; /* Spotify green */
+  background-color: #1db954 !important;
 }
 
 .navbar-brand {
-  color: #ffffff !important; /* White text color */
+  color: #ffffff !important;
 }
 
-/* Carousel Styles */
 .carousel-caption {
-  background-color: rgba(29, 185, 84, 0.7); /* Transparent green background */
-  color: #ffffff; /* White text color */
+  background-color: rgba(29, 185, 84, 0.7);
+  color: #ffffff;
 }
 
-/* Music Genre Chart Styles */
 #musicGenreChart {
   margin: auto;
   display: block;
 }
 
-/* Call to Action Styles */
 .btn-primary {
-  background-color: #1db954; /* Spotify green */
-  border-color: #1db954; /* Spotify green */
+  background-color: #1db954;
+  border-color: #1db954;
 }
 
 .btn-primary:hover {
-  background-color: #14843d; /* Darker green on hover */
-  border-color: #14843d; /* Darker green on hover */
+  background-color: #14843d;
+  border-color: #14843d;
 }
 
-/* Responsive Styles for Small Screens */
 @media (max-width: 768px) {
-  /* Adjust styles for smaller screens if needed */
 }

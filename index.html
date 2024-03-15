@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Spotify Recap</title>
-
-    <link href="bootstrap.css" rel="stylesheet" />
-
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link href="style.css" rel="stylesheet" />
-
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">Spotify Recap</a>
+        <a class="navbar-brand" href="#">Votre récapitulatif d'écoute</a>
       </div>
     </nav>
 
@@ -27,48 +27,9 @@
         class="carousel slide"
         data-bs-ride="carousel"
       >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#topTracksCarousel"
-            data-bs-slide-to="0"
-            class="active"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#topTracksCarousel"
-            data-bs-slide-to="1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#topTracksCarousel"
-            data-bs-slide-to="2"
-          ></button>
-        </div>
-
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="abris.png" class="d-block w-100" alt="Top Track 1" />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Top Track 1</h5>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <img src="keychain.png" class="d-block w-100" alt="Top Track 2" />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Top Track 2</h5>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <img src="pins.png" class="d-block w-100" alt="Top Track 3" />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Top Track 3</h5>
-            </div>
-          </div>
+          <!-- Dynamically populated carousel items will go here -->
         </div>
-
         <button
           class="carousel-control-prev"
           type="button"
@@ -89,48 +50,64 @@
         </button>
       </div>
 
-      <div class="mt-4">
-        <canvas id="musicGenreChart" width="400" height="200"></canvas>
-      </div>
-
       <div class="mt-4 text-center">
-        <h2>Explore More with Spotify</h2>
-        <p>Discover new music and create your own playlists.</p>
+        <h2>Écoutez toujours plus sur Spotify</h2>
+        <p>
+          Découvrez de nouvelles musiques et alimentez votre propre playlist.
+        </p>
         <a href="https://www.spotify.com/" class="btn btn-primary"
-          >Get Spotify</a
+          >Télécharger Spotify</a
         >
       </div>
     </div>
 
-    <script src="path/to/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script>
-      fetch("data.json")
-        .then((response) => response.json())
-        .then((jsonData) => {
-          var cardGrid = document.getElementById("cardGrid");
-          jsonData.forEach(function (cardData) {
-            var card = document.createElement("div");
-            card.classList.add("col-md-4");
-            console.log(cardData.album.images);
-            var cardHTML = `
-                      <div class="card">
-                          <img src="${cardData.album.images[1].url}" class="card-img-top" alt="Card Image">
-                          <div class="card-body">
-                              <h5 class="card-title">${cardData.title}</h5>
-                              <p class="card-title">${cardData.description}</p>
-                          </div>
-                      </div>
-                  `;
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("data.json")
+          .then((response) => response.json())
+          .then((jsonData) => {
+            var carouselInner = document.querySelector(".carousel-inner");
+            jsonData.forEach(function (cardData, index) {
+              var carouselItem = document.createElement("div");
+              carouselItem.classList.add("carousel-item");
+              if (index === 0) {
+                carouselItem.classList.add("active");
+              }
+              var itemHTML = `
+              <img src="${cardData.album.images[1].url}" class="d-block w-100" alt="${cardData.album.name}">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>${cardData.album.name}</h5>
+                <p>${cardData.album.label}</p>
+                <audio src="${cardData.preview_url}" id="audio-${cardData.id}"></audio>
+                <button class="btn btn-success btn-play" data-audio-id="audio-${cardData.id}"><i class="fas fa-play"></i></button>
+              </div>
+            `;
+              carouselItem.innerHTML = itemHTML;
+              carouselInner.appendChild(carouselItem);
+            });
 
-            card.innerHTML = cardHTML;
-            cardGrid.appendChild(card);
+            // Event listener for play/pause buttons
+            var playButtons = document.querySelectorAll(".btn-play");
+            playButtons.forEach(function (button) {
+              button.addEventListener("click", function () {
+                var audioId = this.getAttribute("data-audio-id");
+                var audio = document.getElementById(audioId);
+                if (audio.paused) {
+                  audio.play();
+                  this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                  audio.pause();
+                  this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+              });
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching JSON data:", error);
           });
-        })
-        .catch((error) => {
-          console.error("Error fetching JSON data:", error);
-        });
+      });
     </script>
   </body>
 </html>
