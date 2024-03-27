@@ -1,48 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
 body {
-  background-color: #191414;
+  background-color: #0e0e0e;
   color: #ffffff;
-  font-family: Arial, sans-serif;
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+  margin: 0 32px;
 }
 
-.navbar {
-  background-color: #191414;
-  padding: 10px 0;
-}
-
-.navbar-brand {
-  color: #1db954;
+h1 {
+  color: #ffffff;
   font-size: 24px;
   font-weight: bold;
 }
 
-.carousel-item img {
-  border-radius: 5px;
+/* Container des cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Card de la musique */
+.card {
+  margin-right: 16px;
+  margin-bottom: 16px;
+  background-color: #000000;
+  padding: 16px;
+  border-radius: 24px;
+  justify-content: space-between;
+  border: rgba(255, 255, 255, 0.1) 1px solid;
 }
 
 .carousel-caption {
-  background-color: rgba(25, 20, 20, 0.7);
-  border-radius: 5px;
-  padding: 10px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.carousel-caption h5,
-.carousel-caption p {
+.carousel-text {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.carousel-caption h3 {
+  font-weight: bold;
   margin: 0;
 }
 
 .carousel-caption p {
-  font-size: 14px;
+  margin: 0;
+  margin-top: 8px;
+}
+
+/* Cover de la musique */
+.card img {
+  border-radius: 8px;
+  width: 250px;
+  height: 250px;
+}
+
+.card p {
+  font-size: 16px;
 }
 
 .play-btn {
   background-color: #1db954;
   color: #ffffff;
   border: none;
-  border-radius: 50%;
+  border-radius: 100%;
   width: 40px;
   height: 40px;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 16px;
+  margin: 0;
   cursor: pointer;
   transition: background-color 0.3s;
 }
