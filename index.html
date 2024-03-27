@@ -27,9 +27,7 @@
         class="carousel slide"
         data-bs-ride="carousel"
       >
-        <div class="carousel-inner">
-          <!-- Dynamically populated carousel items will go here -->
-        </div>
+        <div class="carousel-inner"></div>
         <button
           class="carousel-control-prev"
           type="button"
@@ -91,7 +89,6 @@
               carouselInner.appendChild(carouselItem);
             });
 
-            // Event listener for play/pause buttons
             var playButtons = document.querySelectorAll(".btn-play");
             playButtons.forEach(function (button) {
               button.addEventListener("click", function () {

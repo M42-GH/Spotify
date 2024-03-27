@@ -1,11 +1,9 @@
-/* Body Styles */
 body {
   background-color: #191414;
   color: #ffffff;
   font-family: Arial, sans-serif;
 }
 
-/* Navbar Styles */
 .navbar {
   background-color: #191414;
   padding: 10px 0;
@@ -17,7 +15,6 @@ body {
   font-weight: bold;
 }
 
-/* Carousel Styles */
 .carousel-item img {
   border-radius: 5px;
 }
